@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.requests-content {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "request-list"
+    "student-list";
+  width: auto;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  margin: 0 5%;
+  gap: 25px;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+.requests-content .modal-actions {
+  flex-wrap: wrap;
+}
+
+.requests-content .modal-actions .input-reason {
+  flex: 0 0 100%;
+}
+
+.requests-content .modal-actions .btn-cancelar,
+.requests-content .modal-actions .btn-salir {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.requests-content .request-list,
+.requests-content .student-list {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  gap: 10px;
+}
+
+.requests-content .request-list {
+  grid-area: request-list;
+}
+
+.requests-content .student-list {
+  grid-area: student-list;
+}
+
+.requests-content .request-table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-height: 100%;
+  font-size: clamp(10px, 0.8vw, 12px);
+  overflow-x: auto;
+}
+
+.requests-content .request-table-rows {
+  flex: 1;
+  min-height: 0;
+  min-width: 1000px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.requests-content .list-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.requests-content .list-title {
+  color: var(--color-negroBajo);
+  font-size: clamp(1rem, 1.4vw, 1.25rem); /*Titulo de tablas*/
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.requests-content .request-list .request-table > div:first-child,
+.requests-content .request-list .request-table-rows > div {
+  min-width: 1000px;
+  grid-template-columns:
+    minmax(80px, 0.9fr)
+    minmax(80px, 0.9fr)
+    minmax(42px, 0.45fr)
+    minmax(85px, 0.9fr)
+    minmax(72px, 0.8fr)
+    minmax(130px, 1.4fr)
+    minmax(85px, 0.9fr)
+    minmax(95px, 1fr)
+    minmax(125px, 1.2fr)
+    minmax(80px, 0.8fr);
+}
+
+.requests-content .student-list .request-table > div:first-child,
+.requests-content .student-list .request-table-rows > div {
+  min-width: 450px;
+  grid-template-columns:
+    minmax(90px, 1fr)
+    minmax(90px, 1fr)
+    minmax(120px, 1.2fr)
+    minmax(90px, 0.9fr);
+}
+
+.requests-content .student-list .request-table-rows {
+  min-width: 450px;
+}
+
+.requests-content .request-table > div:first-child {
+  font-size: clamp(10px, 1.5vw, 15px); /*ENCABEZADOS DE TABLAS*/
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.requests-content .student-list .list-top > div {
+  flex: 0 1 420px;
+  width: min(100%, 420px);
+  min-width: 0;
+}
+
+.requests-content .student-list .list-top input {
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  font-size: 12px;
+}
+
+.requests-content .request-table-rows > div > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.requests-content .comprobante {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 4px;
+}
+
+.requests-content .comprobante > span {
+  overflow-wrap: anywhere;
+}
+
+.requests-content .comprobante-iconos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.requests-content .comprobante-iconos .material-symbols-outlined {
+  font-size: 18px;
+  overflow-wrap: normal;
+}
+
+.requests-content .comprobante-iconos .icono-pdf {
+  color: var(--color-rojoRechazado);
+}
+
+.requests-content .comprobante-iconos .icono-abrir {
+  cursor: pointer;
+  border-radius: 4px;
+  background: var(--color-oroUas);
+  color: white;
+}
+
+.requests-content .acciones {
+  display: flex;
+  justify-content: right;
+  min-width: 0;
+  gap: 8px;
+}
+
+.requests-content .acciones button {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+
+.requests-content .acciones .actions-icons {
+  font-size: 16px;
+}
+
+.requests-content .btn-rechazar {
+  background: var(--color-rojoRechazado);
+}
+
+.requests-content .btn-aceptar {
+  background: var(--color-verdeAprobado);
+}
+
+@media (max-width: 768px) {
+  .requests-content {
+    margin: 0 3%;
+    gap: 16px;
+  }
+
+  .requests-content .request-table {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 992px) {
+  .requests-content .list-title {
+    font-size: clamp(16px, 1.8vw, 18px);
+  }
+
+  .requests-content .student-list .list-top > div {
+    flex-basis: clamp(220px, 34vw, 320px);
+    width: clamp(220px, 34vw, 320px);
+  }
+
+  .requests-content .request-table > div:first-child > span {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .requests-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    max-height: none;
+    margin: 0;
+    gap: 20px;
+    overflow: visible;
+  }
+
+  .requests-content .request-list,
+  .requests-content .student-list {
+    grid-template-rows: auto auto;
+    gap: 8px;
+  }
+
+  .requests-content .list-title {
+    font-size: clamp(17px, 5vw, 21px);
+  }
+
+  .requests-content .list-top {
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .requests-content .student-list .list-top > div {
+    flex-basis: auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  .requests-content .request-table {
+    width: 100%;
+    height: 38vh;
+    min-height: 160px;
+    max-height: 38vh;
+    padding: 10px;
+    overflow-x: hidden;
+    border-radius: 12px;
+  }
+
+  .requests-content .request-table > div:first-child {
+    display: none;
+  }
+
+  .requests-content .request-table-rows {
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+    gap: 8px;
+    overflow-x: hidden;
+  }
+
+  .requests-content .request-table-rows > div {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: 9px;
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    background: var(--color-blanco);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    font-size: 15px;
+  }
+
+  .requests-content .request-list .request-table-rows > div,
+  .requests-content .student-list .request-table-rows > div {
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .requests-content .request-table-rows {
+    min-width: 0;
+  }
+
+  .requests-content .student-list .request-table-rows {
+    min-width: 0;
+  }
+
+  .requests-content [data-label]::before {
+    content: attr(data-label);
+    color: var(--color-negroBajo);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .requests-content .request-table-rows > div > span[data-label],
+  .requests-content .comprobante,
+  .requests-content .acciones {
+    display: grid;
+    grid-template-columns: minmax(105px, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: 8px 10px;
+    min-width: 0;
+    line-height: 1.35;
+  }
+
+  .requests-content .comprobante > span,
+  .requests-content .comprobante-iconos {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .requests-content .comprobante-iconos {
+    flex-wrap: wrap;
+  }
+
+  .requests-content .request-table-rows > div .acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .requests-content .acciones::before {
+    flex: 0 0 100%;
+  }
+
+  .requests-content .acciones button {
+    flex: 0 0 32px;
+    justify-self: start;
+    width: 30px;
+    min-width: 32px;
+    height: 32px;
+  }
+
+  .requests-content .acciones button + button {
+    margin-left: 4px;
+  }
+
+  .requests-content .student-list .list-top input {
+    min-height: 38px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .requests-content .request-table-rows > div {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .requests-content .request-table-rows > div > span[data-label],
+  .requests-content .comprobante,
+  .requests-content .acciones {
+    grid-template-columns: minmax(92px, 0.75fr) minmax(0, 1.25fr);
+    gap: 8px;
+  }
+}

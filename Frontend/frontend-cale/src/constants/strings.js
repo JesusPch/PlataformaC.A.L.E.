@@ -1,0 +1,132 @@
+function StringsCale() {
+  return {
+    titleApplication: "Plataforma de Control de Actividades C.A.L.E",
+    formRegisterTitle: "Formulario de Registro de Inscripción - C.A.L.E",
+    nameCALE: "Centro de Auto-Aprendizaje de Lenguas Extranjeras",
+    loginRoleStudent: "Alumno",
+    loginRoleAdministrator: "Administrador",
+    loginButtonText: "Iniciar sesión",
+    registerGoToLink: "¿Eres un alumno y no estas inscrito?",
+    formRegisterIndicator: "Completa todos los campos*",
+    placeHolderStudentName: "Nombre",
+    placeHolderStudentLastName: "Apellido",
+    placeHolderStudentEmail: "Correo Electrónico:",
+    placeHolderStudentAccountNumber: "Número de cuenta",
+    placeHolderStudentTelephoneNumber: "Número de télefono",
+    placeHolderStudentAge: "Edad",
+    placeHolderStudentLevel: "Nivel",
+    placeHolderStudentModal: "Modalidad",
+    placeHolderStudentPassword: "Contraseña",
+    placeHolderStudentActivitiesProgress: "Progreso de Actividades",
+    placeHolderStudentHoursProgress: "Progreso de Horas",
+    placeHolderActivityName: "Nombre de Actividad",
+    placeHolderActivityRequiredHours: "Horas Requeridas",
+    placeHolderStudentReleaseDate: "Fecha de liberación",
+    placeHolderActivityresourcesRequiredForTheActivity:
+      "Recursos de la actividad",
+    btnShowReleasedStudentsListCale: "Liberación",
+    btnReleasedStudentCale: "Liberar",
+    formUploadImageIndicator:
+      "Sube tu recibo de pago en PDF (máximo 5 MB)",
+    uploadTextIndicator: "Arrastra el archivo o",
+    uploadImageButton: "Subir archivo",
+    sendRequest: "Enviar solicitud",
+    subtitleHeader: "CENTRO DE ESTUDIOS DE IDIOMAS",
+    titleWelcomeCale:
+      "¡BIENVENIDO AL CENTRO DE AUTO APRENDIZAJE DE LENGUAS EXTRANJERAS!",
+    bodyWelcomeCale:
+      "El Centro de Auto-aprendizaje de Lenguas Extranjeras te ofrece la oportunidad de mejorar tus habilidades lingüísticas, en este caso del idioma inglés, para que cuando una vez terminados los niveles de CEI puedas seguir estudiando por tu cuenta. A través de las actividades que tenemos preparadas para tí podrás practicar lectura, escritura, comprensión auditiva y uso del lenguaje; así como también 2 exámenes Mock: Cambridge English Preliminary (PET) Cambridge English First (FCE) para que aproveches al máximo la certificación que te ofrecemos en CEI Culiacán.",
+    mision: "Misión",
+    textMision:
+      "El Centro de Auto-aprendizaje de Lenguas Extranjeras te ofrece la oportunidad de mejorar tus habilidades lingüísticas a través del uso de diferentes materiales; nuestra misión es brindar apoyo a los y las alumnos(as)  a través de las diferentes herramientas y materiales para mejorar y reforzar el aprendizaje del idioma que esté estudiando. Esto es con el fin de contribuir y promover que nuestros y nuestras  alumnos(as) sean capaces de comunicarse de manera efectiva en diferentes contextos, tanto sociales, culturales y académicos, y de esta forma contribuir a su crecimiento personal, profesional y educativo.",
+    importantPointsTitle: "PUNTOS IMPORTANTES:",
+    importantPoints1:
+      "Recuerda utilizar tu nombre completo (no apodos y/o pseudónimos) en todas tus actividades.",
+    importantPoints2:
+      "Todas las actividades que realices deberán ser de tu autoría, no se aceptarán evidencias de otras personas.",
+    importantPoints3:
+      "Las evidencias que subas deberán ser legibles y claras, de lo contrario no se validarán.",
+    importantPoints4:
+      "No se aceptarán evidencias con faltas de ortografía, redacción o mala presentación.",
+    importantPoints5:
+      "Deberás completar las actividades en su TOTALIDAD y subir las evidencias correspondientes antes de la fecha límite para obtener tu Constancia de horas CALE.",
+    importantPoints6:
+      "Leé cuidadosamente cada actividad, en ella se te indica lo que realizarás y la evidencia que tienes que subir.",
+    importantPoints7:
+      "Si tienes alguna duda sobre las actividades, escríbenos a este correo o por medio de Classroom y la resolveremos junt@s.",
+    importantPoints8:
+      "Se recomienda hacerlas en el orden presentado, más no es indispensable, así como enviar sus evidencias hechas a mano o computadora.",
+    importantPoints9:
+      "En caso de que no puedas completar las actividades en el tiempo establecido, deberás enviar un correo a este correo o por medio de Classroom para solicitar una extensión de tiempo.",
+    navHome: "Inicio",
+    navExercises: "Bitácora de Ejercicios",
+    navRule: "Reglamento CALE",
+    btnSendFile: "Subir",
+    altRuleProtocol: "Protocolo de uso de las instalaciones de CALE",
+    altRuleComputerCenter: "Reglamento del centro de cómputo CALE",
+    exerciseCardInstruction:
+      "Descarga los pdf dentro de la bitácora de ejercicios para seguir las instrucciones de cada ejercicio.",
+    registrationRequestSent: "Petición de inscripción enviada",
+    requestIndication: "Recibirás un correo confirmando tu solicitud.",
+    requestIndicationError:
+      "En caso de cualquier error se le notificara por correo y necesitara reenviar la petición.",
+    navActivities: "Actividades",
+    navRequests: "Peticiones",
+    titleRequests: "Peticiones de Registro",
+    titleRegisteredStudents: "Lista de alumnos registrados",
+    titleReleasedStudentsList:"Lista de alumnos liberados",
+    columnReleaseDate:"Fecha de liberación",
+    columnEmail: "Correo electrónico",
+    columnPhone: "Número de teléfono",
+    columnProof: "Comprobante",
+    columnAdmission: "Admisión",
+    searchStudent: "Buscar alumno",
+    makeActivity: "Crear Actividad",
+    downloadInstructions: "Descarga PDF de Instrucciones:",
+    activityStatusTitle: "Estado de la Actividad",
+    statusNotSent: "Sin entregar.",
+    statusAuthorized: "Autorizado.",
+    statusSent: "Entregado.",
+    statusRejected: "Rechazado.",
+    btnSeeGif: "Ver Gif",
+    pdfGuideTitle: "Sube todos tus trabajos en PDF",
+    pdfGuideSubtitle: "Convierte tus documentos Word en PDF",
+    pdfGuideStep1: "Abre tu navegador de preferencia.",
+    pdfGuideStep2:
+      "En la barra de direcciones de tu navegador web busca “iLovePDF” o entra desde el link de aquí:",
+    pdfGuideStep3: "Haz click en la herramienta de “Word to PDF”.",
+    pdfGuideStep4Start: "En",
+    pdfGuideStep4Bold: "“Seleccionar documentos WORD”",
+    pdfGuideStep4:
+      "selecciona tu documento Word desde tu explorador de archivos.",
+    pdfGuideStep5:
+      "Finalmente da click en convertir a PDF y espera a que termine la conversión.",
+    pdfGuideStep6: "Descarga el archivo PDF que acabas de convertir.",
+    altIlovepdfLogo: "Logo de iLovePDF",
+    altBrowsers: "Navegadores web",
+    altGoogleSearch: "Búsqueda de iLovePDF en Google",
+    altWordToPdf: "Herramienta Word a PDF de iLovePDF",
+    altWordToPdfButton: "Botón para convertir Word a PDF en iLovePDF",
+    logoutTitle: "¿Cerrar sesión?",
+    btnCancel: "Cancelar",
+    btnLogout: "Salir",
+    btnDelete: "Eliminar",
+    deleteActivityTitle: "¿Eliminar actividad?",
+    deleteStudentTitle: "¿Eliminar alumno?",
+    deleteDateTitle: "¿Eliminar fecha?",
+    acceptRequestTitle: "¿Aceptar petición de registro?",
+    rejectRequestTitle: "¿Rechazar petición de registro?",
+    rejectReasonPlaceholder: "Motivo de motivo",
+    btnAccept: "Aceptar",
+    btnReject: "Rechazar",
+    altImgGifCale: "Gif tutorial de como usar Ilovepdf",
+    changeFile: "Cambiar archivo",
+    nameActivity: "Nombre de la Actividad",
+    hoursRequired: "Horas requeridas para acceder a la actividad.",
+    dragPDF: "Arrastrar un archivo .PDF o...",
+    createActivity: "Crear",
+    placeHolderLink: "Enlace",
+  };
+}
+
+export default StringsCale;
