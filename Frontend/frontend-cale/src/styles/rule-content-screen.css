@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rule-content {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(10px, 3vw, 40px);
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .rule-image {
+    width: auto;
+    height: 1000px;
+    object-fit: contain;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    @media screen and (max-width: 900px) {
+      width: auto;
+      height: 500px;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: auto;
+      height: 300px;
+    }
+  }
+}

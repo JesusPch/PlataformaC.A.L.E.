@@ -1,0 +1,4 @@
+# Se completa cuando se defina con qué se va a hacer la app.
+build/
+.env
+*.log
