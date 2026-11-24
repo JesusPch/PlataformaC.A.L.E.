@@ -33,21 +33,16 @@ function StudentExerciseLogScreen() {
             <div className="exercise-info">
               <span>LISTENING | Everyday related topics B2</span>
               <div className="exercise-download">
-                <a href={pdfPrueba} download className="download-text">
-                  {strings.downloadInstructions}
-                </a>
                 <a
                   href={pdfPrueba}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Ver PDF"
                 >
+                  {strings.pdfInstructions}
                   <span className="material-symbols-outlined icono-pdf">
                     picture_as_pdf
                   </span>
-                </a>
-                <a href={pdfPrueba} download aria-label="Descargar PDF">
-                  <span className="material-symbols-outlined">download</span>
                 </a>
               </div>
             </div>
@@ -63,21 +58,16 @@ function StudentExerciseLogScreen() {
             <div className="exercise-info">
               <span>LISTENING | Everyday related topics C1</span>
               <div className="exercise-download">
-                <a href={pdfPrueba} download className="download-text">
-                  {strings.downloadInstructions}
-                </a>
                 <a
                   href={pdfPrueba}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Ver PDF"
                 >
+                  {strings.pdfInstructions}
                   <span className="material-symbols-outlined icono-pdf">
                     picture_as_pdf
                   </span>
-                </a>
-                <a href={pdfPrueba} download aria-label="Descargar PDF">
-                  <span className="material-symbols-outlined">download</span>
                 </a>
               </div>
             </div>
@@ -93,21 +83,16 @@ function StudentExerciseLogScreen() {
             <div className="exercise-info">
               <span>LISTENING : 6 minute English</span>
               <div className="exercise-download">
-                <a href={pdfPrueba} download className="download-text">
-                  {strings.downloadInstructions}
-                </a>
                 <a
                   href={pdfPrueba}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Ver PDF"
                 >
+                  {strings.pdfInstructions}
                   <span className="material-symbols-outlined icono-pdf">
                     picture_as_pdf
                   </span>
-                </a>
-                <a href={pdfPrueba} download aria-label="Descargar PDF">
-                  <span className="material-symbols-outlined">download</span>
                 </a>
               </div>
             </div>
@@ -123,21 +108,16 @@ function StudentExerciseLogScreen() {
             <div className="exercise-info">
               <span>Learning English for Work</span>
               <div className="exercise-download">
-                <a href={pdfPrueba} download className="download-text">
-                  {strings.downloadInstructions}
-                </a>
                 <a
                   href={pdfPrueba}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Ver PDF"
                 >
+                  {strings.pdfInstructions}
                   <span className="material-symbols-outlined icono-pdf">
                     picture_as_pdf
                   </span>
-                </a>
-                <a href={pdfPrueba} download aria-label="Descargar PDF">
-                  <span className="material-symbols-outlined">download</span>
                 </a>
               </div>
             </div>
@@ -153,21 +133,16 @@ function StudentExerciseLogScreen() {
             <div className="exercise-info">
               <span>Learn about the UK and its culture</span>
               <div className="exercise-download">
-                <a href={pdfPrueba} download className="download-text">
-                  {strings.downloadInstructions}
-                </a>
                 <a
                   href={pdfPrueba}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Ver PDF"
                 >
+                  {strings.pdfInstructions}
                   <span className="material-symbols-outlined icono-pdf">
                     picture_as_pdf
                   </span>
-                </a>
-                <a href={pdfPrueba} download aria-label="Descargar PDF">
-                  <span className="material-symbols-outlined">download</span>
                 </a>
               </div>
             </div>
@@ -183,21 +158,16 @@ function StudentExerciseLogScreen() {
             <div className="exercise-info">
               <span>English for Emails</span>
               <div className="exercise-download">
-                <a href={pdfPrueba} download className="download-text">
-                  {strings.downloadInstructions}
-                </a>
                 <a
                   href={pdfPrueba}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Ver PDF"
                 >
+                  {strings.pdfInstructions}
                   <span className="material-symbols-outlined icono-pdf">
                     picture_as_pdf
                   </span>
-                </a>
-                <a href={pdfPrueba} download aria-label="Descargar PDF">
-                  <span className="material-symbols-outlined">download</span>
                 </a>
               </div>
             </div>
@@ -213,21 +183,16 @@ function StudentExerciseLogScreen() {
             <div className="exercise-info">
               <span>B1-B2 Grammar</span>
               <div className="exercise-download">
-                <a href={pdfPrueba} download className="download-text">
-                  {strings.downloadInstructions}
-                </a>
                 <a
                   href={pdfPrueba}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Ver PDF"
                 >
+                  {strings.pdfInstructions}
                   <span className="material-symbols-outlined icono-pdf">
                     picture_as_pdf
                   </span>
-                </a>
-                <a href={pdfPrueba} download aria-label="Descargar PDF">
-                  <span className="material-symbols-outlined">download</span>
                 </a>
               </div>
             </div>

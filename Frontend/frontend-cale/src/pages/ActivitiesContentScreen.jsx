@@ -29,8 +29,25 @@ function ActivitiesContent() {
   const strings = StringsCale();
   const [activeModal, setActiveModal] = useState(null);
   const { hourOptions } = useSetHoursRequired();
-  const { students } = useShowStudentList();
   const [showCreateActivityModal, setCreateActivityModal] = useState(false);
+
+  const { students } = useShowStudentList();
+
+  const [search, setSearch] = useState('');
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const normalizedSearch = search.trim().toLocaleLowerCase();
+  const matchingStudents = students.filter((student) =>
+    [student.name, student.lastName, student.accountNumber, student.level]
+      .join(" ")
+      .toLocaleLowerCase()
+      .includes(normalizedSearch),
+  );
+  const filteredStudents =
+    matchingStudents.length > 0 ? matchingStudents : students;
 
   const activities = [
     {
@@ -55,6 +72,7 @@ function ActivitiesContent() {
             <SearchBarCale
               type="text"
               placeholder={strings.searchStudent}
+              onChange={handleSearch}
             ></SearchBarCale>
           </SearchBarContainerCale>
         </div>
@@ -73,7 +91,7 @@ function ActivitiesContent() {
                 </ButtonReleaseCale>
           </ListHeaderCale>
           <ListRowContainerCale className="table-rows">
-            {students.map((student) => (
+            {filteredStudents.map((student) => (
               <ListRowCale key={student.id}>
                 <span data-label={strings.placeHolderStudentName}>
                   {student.name}
@@ -98,7 +116,7 @@ function ActivitiesContent() {
                 </div>
 
                 <span data-label={strings.placeHolderStudentHoursProgress}>
-                  {student.hours}
+                  {student.hours}h/20h
                 </span>
 
                 <div className="release-cell" data-label={strings.btnReleasedStudentCale}>
