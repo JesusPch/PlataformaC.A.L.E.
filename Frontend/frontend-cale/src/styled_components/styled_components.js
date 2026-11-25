@@ -309,7 +309,7 @@ export const ListHeaderCale = styled.div`
 
 export const ListRowCale = styled.div`
   position: relative;
-  z-index: 0;
+  z-index: ${({ $isSelected }) => ($isSelected ? 1 : 0)};
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 1fr);
@@ -318,8 +318,18 @@ export const ListRowCale = styled.div`
   padding: 12px 15px;
   margin: 0 10px;
   border-radius: 10px;
-  background: var(--color-grisClaro);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: ${({ $isSelected }) =>
+    $isSelected ? "var(--color-darkBlue)" : "var(--color-grisClaro)"};
+  color: ${({ $isSelected }) =>
+    $isSelected ? "var(--color-blanco)" : "inherit"};
+  box-shadow: ${({ $isSelected }) =>
+    $isSelected
+      ? "rgba(8, 51, 143, 0.45) 0px 10px 20px, rgba(0, 0, 0, 0.25) 0px 6px 6px"
+      : "rgba(0, 0, 0, 0.35) 0px 5px 15px"};
+  transform: ${({ $isSelected }) =>
+    $isSelected ? "translateY(-4px)" : "translateY(0)"};
+  transition: all 0.25s ease;
+  cursor: pointer;
   overflow-wrap: anywhere;
 `;
 
@@ -500,14 +510,14 @@ export const ModalPDFCardCale = styled(ModalCardCale)`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      span{
+      span {
         font-size: 25px;
         padding: 5px;
         margin: 5px;
         cursor: pointer;
         border-radius: 10px;
-        }
-    
+      }
+
       .docs-icon {
         background-color: var(--color-azulUasHover);
         color: var(--color-doradoClaro);
@@ -515,121 +525,122 @@ export const ModalPDFCardCale = styled(ModalCardCale)`
         padding: 10px;
         pointer-events: none;
       }
-      
+
       .modal-title {
         color: var(--color-azulUas);
         font-size: 18px;
         font-weight: bold;
         pointer-events: none;
       }
-    
+
       .close-icon {
         color: var(--color-negroBajo);
         &:hover {
           color: var(--color-negro);
-          box-shadow: 
+          box-shadow:
             rgba(69, 69, 220, 0.25) 0px 50px 100px -20px,
             rgba(55, 0, 255, 0.3) 0px 30px 60px -30px,
             rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-          }
         }
       }
-        @media screen and (max-width: 992px) {
-
-          .pdf-modal-header .docs-icon, .pdf-modal-header .close-icon {
-            font-size: 18px;
-          }
-          
-          .pdf-modal-header .modal-title {
-            font-size: 15px;
-          }
-      
-  
-            @media screen and (max-width: 750px) {
-              .pdf-modal-header .docs-icon, .pdf-modal-header .close-icon {
-                font-size: 12px;
-              }
-              
-              .pdf-modal-header .docs-icon {
-                padding: 8px;
-              }
-              
-              .pdf-modal-header .modal-title {
-                font-size: 10px;
-              }
-            }
-      
-              @media screen and (max-width: 660px) {
-                .pdf-modal-header .docs-icon, .pdf-modal-header .close-icon {
-                  font-size: 12px;
-                }
-                
-                .pdf-modal-header .docs-icon {
-                  padding: 8px;
-                }
-                
-                .pdf-modal-header .modal-title {
-                  font-size: 10px;
-                }
-              }
-                
-                @media screen and (max-width: 600px) {
-                  .pdf-modal-header .docs-icon, .pdf-modal-header .close-icon {
-                    font-size: 7px;
-                    border-radius: 5px;
-                  }
-                  
-                  .pdf-modal-header .docs-icon {
-                    padding: 5px;
-                  }
-                  
-                  .pdf-modal-header .modal-title {
-                    font-size: 8px;
-                  }
-                }
-                  
-                @media screen and (max-width: 400px) {
-                  .pdf-modal-header .docs-icon, .pdf-modal-header .close-icon {
-                    font-size: 5px;
-                    border-radius: 3px;
-                  }
-                  
-                  .pdf-modal-header .docs-icon {
-                    padding: 3px;
-                  }
-                  
-                  .pdf-modal-header .modal-title {
-                    font-size: 5px;
-                  }
-                }
-          }
     }
-
-    .pdf-container{
-      width: 100%;
-      min-width: 0;
-      height: min(80vh, 820px);
-      .pdf-viewer {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      } 
-    }
-
-    @media screen and (max-width: 600px) {
-      gap: 8px;
-
-      .pdf-modal-header {
-        min-width: 0;
+    @media screen and (max-width: 992px) {
+      .pdf-modal-header .docs-icon,
+      .pdf-modal-header .close-icon {
+        font-size: 18px;
       }
 
-      .pdf-container {
-        height: calc(100dvh - 95px);
+      .pdf-modal-header .modal-title {
+        font-size: 15px;
+      }
+
+      @media screen and (max-width: 750px) {
+        .pdf-modal-header .docs-icon,
+        .pdf-modal-header .close-icon {
+          font-size: 12px;
+        }
+
+        .pdf-modal-header .docs-icon {
+          padding: 8px;
+        }
+
+        .pdf-modal-header .modal-title {
+          font-size: 10px;
+        }
+      }
+
+      @media screen and (max-width: 660px) {
+        .pdf-modal-header .docs-icon,
+        .pdf-modal-header .close-icon {
+          font-size: 12px;
+        }
+
+        .pdf-modal-header .docs-icon {
+          padding: 8px;
+        }
+
+        .pdf-modal-header .modal-title {
+          font-size: 10px;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .pdf-modal-header .docs-icon,
+        .pdf-modal-header .close-icon {
+          font-size: 7px;
+          border-radius: 5px;
+        }
+
+        .pdf-modal-header .docs-icon {
+          padding: 5px;
+        }
+
+        .pdf-modal-header .modal-title {
+          font-size: 8px;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .pdf-modal-header .docs-icon,
+        .pdf-modal-header .close-icon {
+          font-size: 5px;
+          border-radius: 3px;
+        }
+
+        .pdf-modal-header .docs-icon {
+          padding: 3px;
+        }
+
+        .pdf-modal-header .modal-title {
+          font-size: 5px;
+        }
       }
     }
   }
-    
+
+  .pdf-container {
+    width: 100%;
+    min-width: 0;
+    height: min(80vh, 820px);
+    .pdf-viewer {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    gap: 8px;
+
+    .pdf-modal-header {
+      min-width: 0;
+    }
+
+    .pdf-container {
+      height: calc(100dvh - 95px);
+    }
+  }
 `;
 
 export const ModalButtonCale = styled.button`
