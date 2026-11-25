@@ -1,101 +1,62 @@
-import {useState, useEffect} from "react";
+import { useEffect, useState } from "react";
 
 export function useShowStudentList() {
-    const students = [
-        {
-            id: 1,
-            name: "Juan",
-            lastName: "Pérez",
-            age: 20,
-            accountNumber: "000001",
-            email: "juan.perez@example.com",
-            modality: "Presencial",
-            phone_number: "1234567890",
-            level: "9",
-            progress: 50,
-            hours: 17,
-            released: true,
-            releaseDate: "01-01-2026"
-        },
-        {
-            id: 2,
-            name: "Maria",
-            lastName: "Perez",
-            age: 22,
-            email: "maria.perez@example.com",
-            accountNumber: "000002",
-            email: "maria.perez@example.com",
-            modality: "Presencial",
-            phone_number: "0987654321",
-            level: "Intensivo 5",
-            progress: 100,
-            hours: 20,
-            released: false,
-            releaseDate: "00-00-0000"
-        },
-        {
-            id: 3,
-            name: "Juan",
-            lastName: "Pérez",
-            age: 20,
-            email: "juan.perez@example.com",
-            accountNumber: "000001",
-            modality: "Presencial",
-            phone_number: "1234567890",
-            level: "9",
-            progress: 75,
-            hours: 20,
-            released: false,
-            releaseDate: "00-00-0000"
-        },
-        {
-            id: 4,
-            name: "Maria",
-            lastName: "Perez",
-            age: 22,
-            email: "maria.perez@example.com",
-            accountNumber: "000002",
-            modality: "Presencial",
-            phone_number: "0987654321",
-            level: "Intensivo 5",
-            progress: 25,
-            hours: 6,
-            released: true,
-            releaseDate: "01-01-2026"
-        },
-        {
-            id: 5,
-            name: "Juan",
-            lastName: "Pérez",
-            age: 20,
-            email: "uan.perez@example.com",
-            accountNumber: "000001",
-            modality: "Presencial",
-            phone_number: "1234567890",
-            level: "9",
-            progress: 75,
-            hours: 15,
-            released: true,
-            releaseDate: "01-01-2026"
-        },
-        {
-            id: 6,
-            name: "Maria",
-            lastName: "Perez",
-            age: 22,
-            email: "maria.perez@example.com",
-            accountNumber: "000002",
-            modality: "Presencial",
-            phone_number: "0987654321",
-            level: "Intensivo 5",
-            progress: 25,
-            hours: "7",
-            released: false,
-            releaseDate: "00-00-0000"
-            
+  const [students, setStudents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchStudents() {
+      try {
+        const response = await fetch("/api/alumnos", {
+          signal: controller.signal,
+        });
+        const result = await response.json();
+
+        if (!response.ok || result.ok !== true || !Array.isArray(result.data)) {
+          throw new Error(
+            result.error || result.message || "No se pudo cargar la lista de alumnos.",
+          );
         }
-    ]
-    return {
-        students
-    };
+
+        setStudents(
+          result.data.map((student) => ({
+            id: student.id_alumno,
+            name: student.nombre,
+            lastName: student.apellido,
+            age: student.edad,
+            accountNumber: student.numero_cuenta,
+            email: student.correo,
+            modality: student.modalidad,
+            phone_number: student.telefono,
+            level: student.nivel,
+            status: student.estado,
+            released: student.estado === "liberado",
+            releaseDate: student.fecha_liberacion,
+            hasReceipt: Boolean(student.pdf_registro_key),
+          })),
+        );
+      } catch (requestError) {
+        if (requestError.name !== "AbortError") {
+          setError(
+            requestError instanceof Error
+              ? requestError.message
+              : "No se pudo cargar la lista de alumnos.",
+          );
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    fetchStudents();
+
+    return () => controller.abort();
+  }, []);
+
+  return { students, isLoading, error };
 }
