@@ -20,8 +20,9 @@ import ViewPDF from "../modals/ViewPDFModal";
 function RequestsContent() {
   const strings = StringsCale();
   const [activeModal, setActiveModal] = useState(null);
+  const [selectedStudentId, setSelectedStudentId] = useState(null);
 
-  const { students } = useShowStudentList();
+  const { students, isLoading, error } = useShowStudentList();
 
   const [search, setSearch] = useState('');
 
@@ -30,15 +31,18 @@ function RequestsContent() {
   };
 
   const normalizedSearch = search.trim().toLocaleLowerCase();
-  const matchingStudents = students.filter((student) =>
+  const registeredStudents = students.filter((student) =>
+    student.status === "autorizado" || student.status === "liberado",
+  );
+  const pendingRequests = students.filter(
+    (student) => student.status === "no autorizado",
+  );
+  const filteredStudents = registeredStudents.filter((student) =>
     [student.name, student.lastName, student.accountNumber]
       .join(" ")
       .toLocaleLowerCase()
       .includes(normalizedSearch),
   );
-
-  const filteredStudents =
-    matchingStudents.length > 0 ? matchingStudents : students;
 
   return (
     <section className="requests-content">
@@ -58,7 +62,12 @@ function RequestsContent() {
             <span>{strings.columnAdmission}</span>
           </ListHeaderCale>
           <ListRowContainerCale className="request-table-rows">
-            {students.map((student) => (
+            {isLoading && <p role="status">Cargando solicitudes...</p>}
+            {!isLoading && error && <p role="alert">{error}</p>}
+            {!isLoading && !error && pendingRequests.length === 0 && (
+              <p>No hay solicitudes pendientes.</p>
+            )}
+            {!isLoading && !error && pendingRequests.map((student) => (
               <ListRowCale key={student.id}>
                 <span data-label={strings.placeHolderStudentName}>{student.name}</span>
                 <span data-label={strings.placeHolderStudentLastName}>{student.lastName}</span>
@@ -69,14 +78,33 @@ function RequestsContent() {
                 <span data-label={strings.placeHolderStudentModal}>{student.modality}</span>
                 <span data-label={strings.columnPhone}>+{student.phone_number}</span>
                 <div className="comprobante" data-label={strings.columnProof}>
-                  <span>archivo_evidencias.pdf</span>
+                  <span>
+                    {student.hasReceipt
+                      ? "Comprobante de inscripción"
+                      : "Sin comprobante"}
+                  </span>
                   <div className="comprobante-iconos">
-                    <span
-                      className="material-symbols-outlined icono-abrir"
-                      aria-label="Eliminar actividad"
-                      onClick={() => setActiveModal("viewPDF")}>
-                      arrow_outward
-                    </span>
+                    {student.hasReceipt && (
+                      <span
+                        className="material-symbols-outlined icono-abrir"
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Ver comprobante de ${student.name} ${student.lastName}`}
+                        onClick={() => {
+                          setSelectedStudentId(student.id);
+                          setActiveModal("viewPDF");
+                        }}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            setSelectedStudentId(student.id);
+                            setActiveModal("viewPDF");
+                          }
+                        }}
+                      >
+                        arrow_outward
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="acciones" data-label={strings.columnAdmission}>
@@ -115,8 +143,15 @@ function RequestsContent() {
             <span>{strings.placeHolderStudentAccountNumber}</span>
           </ListHeaderCale>
           <ListRowContainerCale className="request-table-rows">
-
-            {filteredStudents.map((student) => (
+            {isLoading && <p role="status">Cargando alumnos...</p>}
+            {!isLoading && error && <p role="alert">{error}</p>}
+            {!isLoading && !error && registeredStudents.length === 0 && (
+              <p>No hay alumnos registrados.</p>
+            )}
+            {!isLoading && !error && registeredStudents.length > 0 && filteredStudents.length === 0 && (
+              <p>No se encontraron alumnos con esa búsqueda.</p>
+            )}
+            {!isLoading && !error && filteredStudents.map((student) => (
               <ListRowCale key={student.id}>
                 <span data-label={strings.placeHolderStudentName}>{student.name}</span>
                 <span data-label={strings.placeHolderStudentLastName}>{student.lastName}</span>
@@ -144,8 +179,11 @@ function RequestsContent() {
           <DeleteStudentModal onClose={() => setActiveModal(null)} />
         )}
         {activeModal === "viewPDF" && (
-        <ViewPDF onClose={() => setActiveModal(null)} />
-      )}
+          <ViewPDF
+            studentId={selectedStudentId}
+            onClose={() => setActiveModal(null)}
+          />
+        )}
       </article>
     </section>
   );
