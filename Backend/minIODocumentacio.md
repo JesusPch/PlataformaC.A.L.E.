@@ -6,11 +6,11 @@ El formulario de inscripción permite subir un recibo PDF. El backend guarda el 
 
 ## Estado de la configuración local
 
-- Contenedor de uso actual: `minio-registro`.
-- API S3: `http://localhost:9010` (mapeada al puerto `9000` del contenedor).
-- Consola web: `http://localhost:9011` (mapeada al puerto `9001` del contenedor).
+- Contenedor de desarrollo: servicio `minio` de `docker-compose.yml`.
+- API S3: `http://localhost:9000`.
+- Consola web: `http://localhost:9004` (mapeada al puerto `9001` del contenedor).
 - Los puertos están publicados solo en `127.0.0.1`.
-- Volumen persistente: `cale_minio_registro_data`, montado en `/data`.
+- Volumen persistente de Compose: `minio_data`, montado en `/data`.
 - Bucket configurado para recibos: `pdf-registro` (singular).
 - El contenedor anterior `minio-cale` existe, pero actualmente está detenido; conserva el volumen `cale_minio_data`.
 
@@ -23,16 +23,18 @@ La configuración local se guarda en `Backend/.env`, que no debe agregarse al co
 | Variable | Propósito | Valor local no secreto |
 | --- | --- | --- |
 | `MINIO_ENDPOINT` | Host accesible desde el backend | `localhost` |
-| `MINIO_PORT` | Puerto de la API S3 | `9010` |
+| `MINIO_PORT` | Puerto de la API S3 en el host | `9000` |
 | `MINIO_USE_SSL` | Usa HTTPS si es `true` | `false` |
 | `MINIO_REGION` | Región requerida por el cliente S3 | `us-east-1` |
 | `MINIO_BUCKET` | Bucket destino de recibos | `pdf-registro` |
 | `MINIO_ACCESS_KEY` | Identificador de acceso | Se configura localmente; no documentar su valor |
 | `MINIO_SECRET_KEY` | Secreto de acceso | Se configura localmente; no documentar su valor |
 
+Para desarrollo local, el usuario y contraseña raíz son `minio` y `12345678`. Son credenciales públicas exclusivas de desarrollo, no deben usarse en producción. Compose inicializa automáticamente el bucket `pdf-registro`.
+
 El cliente (`src/Services/minio.js`) usa `@aws-sdk/client-s3`, credenciales de estas variables, direccionamiento compatible con MinIO y `forcePathStyle`. Antes de subir cada archivo comprueba que el bucket sea accesible y luego ejecuta `PutObject` con `ContentType: application/pdf`.
 
-Si se modifica `.env`, hay que reiniciar el backend para que lea la nueva configuración. Si MinIO y el backend se ejecutan en contenedores distintos, `localhost` no apuntará al contenedor MinIO; en ese caso se debe usar el hostname de red del servicio y verificar que ambos contenedores compartan una red.
+Si se modifica `.env`, hay que reiniciar el backend para que lea la nueva configuración. Si MinIO y el backend se ejecutan en contenedores distintos, `localhost` no apuntará al contenedor MinIO; en ese caso se debe usar el hostname de red del servicio y verificar que ambos contenedores compartan una red. En el Compose de desarrollo el endpoint interno del servicio es `http://minio:9000`; para el backend ejecutado desde el host se usa `http://127.0.0.1:9000`.
 
 ## Flujo de inscripción
 

@@ -5,18 +5,20 @@ API del sistema de control de horas del CALE. Está construida con Node.js, Expr
 
 ## Preparar y ejecutar localmente
 
-1. Asegúrate de que PostgreSQL esté instalado y ejecutándose, y crea la base de datos indicada por `DB_NAME` si aún no existe. Sequelize no crea la base de datos; solo las tablas dentro de ella.
-2. Crea `Backend/.env` con la configuración de tu entorno:
+1. Para el entorno compartido de desarrollo, desde la raíz del proyecto inicia PostgreSQL y MinIO con Docker Compose, siguiendo las instrucciones del `README.md`. Compose crea la base `servicio`; no necesitas instalar otro servidor PostgreSQL en el host.
+2. Copia `Backend/.env.example` a `Backend/.env`. Para usar la base de Compose desde el host, la configuración de PostgreSQL es:
 
    ```env
-   DB_HOST=localhost
-   DB_PORT=5432
+   DB_HOST=127.0.0.1
+   DB_PORT=5433
    DB_NAME=servicio
    DB_USER=postgres
-   DB_PASSWORD=tu_contraseña_local
+   DB_PASSWORD=cale_local_dev
    PORT=3001
    DB_SYNC=true
    ```
+
+   Si usas un PostgreSQL instalado directamente en el host en vez de Compose, ajusta `DB_HOST`, `DB_PORT` y las credenciales para que coincidan con ese servidor.
 
 3. Desde la carpeta `Backend`, instala las dependencias y arranca el servidor:
 
