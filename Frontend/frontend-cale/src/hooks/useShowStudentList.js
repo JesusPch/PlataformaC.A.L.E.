@@ -13,7 +13,7 @@ export function useShowStudentList() {
             phone_number: "1234567890",
             level: "9",
             progress: 50,
-            hours: "10h/20h",
+            hours: 17,
             released: true,
             releaseDate: "01-01-2026"
         },
@@ -29,7 +29,7 @@ export function useShowStudentList() {
             phone_number: "0987654321",
             level: "Intensivo 5",
             progress: 100,
-            hours: "10h/20h",
+            hours: 20,
             released: false,
             releaseDate: "00-00-0000"
         },
@@ -44,7 +44,7 @@ export function useShowStudentList() {
             phone_number: "1234567890",
             level: "9",
             progress: 75,
-            hours: "10h/20h",
+            hours: 20,
             released: false,
             releaseDate: "00-00-0000"
         },
@@ -59,7 +59,7 @@ export function useShowStudentList() {
             phone_number: "0987654321",
             level: "Intensivo 5",
             progress: 25,
-            hours: "10h/20h",
+            hours: 6,
             released: true,
             releaseDate: "01-01-2026"
         },
@@ -74,7 +74,7 @@ export function useShowStudentList() {
             phone_number: "1234567890",
             level: "9",
             progress: 75,
-            hours: "10h/20h",
+            hours: 15,
             released: true,
             releaseDate: "01-01-2026"
         },
@@ -89,7 +89,7 @@ export function useShowStudentList() {
             phone_number: "0987654321",
             level: "Intensivo 5",
             progress: 25,
-            hours: "10h/20h",
+            hours: "7",
             released: false,
             releaseDate: "00-00-0000"
             

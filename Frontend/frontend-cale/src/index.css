@@ -1,3 +1,9 @@
+/* Fuentes */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Iconos */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+
 :root {
   --color-azulUas: #08338f;
   --color-azulUasHover: #032163;
@@ -18,12 +24,6 @@
   --color-lightBlue: #dbe1ea;
   --color-darkBlue: #8da5c8;
 }
-
-/* Fuentes */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
-/* Iconos */
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 
 span {
   font-family: "Montserrat", sans-serif;

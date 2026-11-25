@@ -23,6 +23,23 @@ function RequestsContent() {
 
   const { students } = useShowStudentList();
 
+  const [search, setSearch] = useState('');
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const normalizedSearch = search.trim().toLocaleLowerCase();
+  const matchingStudents = students.filter((student) =>
+    [student.name, student.lastName, student.accountNumber]
+      .join(" ")
+      .toLocaleLowerCase()
+      .includes(normalizedSearch),
+  );
+
+  const filteredStudents =
+    matchingStudents.length > 0 ? matchingStudents : students;
+
   return (
     <section className="requests-content">
       <div className="request-list">
@@ -54,13 +71,12 @@ function RequestsContent() {
                 <div className="comprobante" data-label={strings.columnProof}>
                   <span>archivo_evidencias.pdf</span>
                   <div className="comprobante-iconos">
-                    <span className="material-symbols-outlined icono-pdf">
-                      picture_as_pdf
+                    <span
+                      className="material-symbols-outlined icono-abrir"
+                      aria-label="Eliminar actividad"
+                      onClick={() => setActiveModal("viewPDF")}>
+                      arrow_outward
                     </span>
-                    <span onClick={() => setActiveModal("viewPDF")} className="material-symbols-outlined icono-abrir">
-                      open_in_new
-                    </span>
-                    <span className="material-symbols-outlined">download</span>
                   </div>
                 </div>
                 <div className="acciones" data-label={strings.columnAdmission}>
@@ -89,7 +105,7 @@ function RequestsContent() {
           <h2 className="list-title">{strings.titleRegisteredStudents}</h2>
           <SearchBarContainerCale>
             <SearchIconCale className="material-symbols-outlined" aria-hidden="true">search</SearchIconCale>
-            <SearchBarCale type="text" placeholder={strings.searchStudent} />
+            <SearchBarCale type="text" onChange={handleSearch} placeholder={strings.searchStudent} />
           </SearchBarContainerCale>
         </div>
         <ListContainerCale className="request-table">
@@ -100,7 +116,7 @@ function RequestsContent() {
           </ListHeaderCale>
           <ListRowContainerCale className="request-table-rows">
 
-            {students.map((student) => (
+            {filteredStudents.map((student) => (
               <ListRowCale key={student.id}>
                 <span data-label={strings.placeHolderStudentName}>{student.name}</span>
                 <span data-label={strings.placeHolderStudentLastName}>{student.lastName}</span>

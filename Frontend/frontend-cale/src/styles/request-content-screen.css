@@ -169,10 +169,23 @@
 }
 
 .requests-content .comprobante-iconos .icono-abrir {
-  cursor: pointer;
-  border-radius: 4px;
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  padding: 2px;
+  place-items: center;
+  border-radius: 5px;
   background: var(--color-oroUas);
-  color: white;
+  color: var(--color-blanco);
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+      box-shadow:
+        rgba(17, 17, 26, 0.1) 0px 8px 24px,
+        rgba(17, 17, 26, 0.1) 0px 16px 56px,
+        rgba(17, 17, 26, 0.1) 0px 24px 80px;
+      background: var(--color-doradoClaro);
+    }
 }
 
 .requests-content .acciones {

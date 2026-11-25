@@ -82,7 +82,7 @@ function StringsCale() {
     columnAdmission: "Admisión",
     searchStudent: "Buscar alumno",
     makeActivity: "Crear Actividad",
-    downloadInstructions: "Descarga PDF de Instrucciones:",
+    pdfInstructions: "Visualizar el PDF de Instrucciones:",
     activityStatusTitle: "Estado de la Actividad",
     statusNotSent: "Sin entregar.",
     statusAuthorized: "Autorizado.",
