@@ -4,11 +4,22 @@
   box-sizing: border-box;
 }
 
+.modal-container {
+  padding: 12px;
+  overflow: hidden;
+}
+
 .modal-activity {
-  width: 480px !important;
-  max-width: 90% !important;
+  width: min(480px, calc(100vw - 24px)) !important;
+  max-width: none !important;
+  height: auto;
+  max-height: calc(100dvh - 24px);
   padding: 24px 32px !important;
+  margin: 0;
   gap: 20px !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 
   .modal-header-top {
     width: 100%;
@@ -20,6 +31,7 @@
 
   .form-container-modal {
     width: 100%;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -37,7 +49,7 @@
     .hours-label-text {
       font-family: "Montserrat", sans-serif;
       font-size: 13px;
-      color: var(--color-negroBajo #333);
+      color: var(--color-negroBajo, #333);
     }
   }
 }
@@ -45,15 +57,26 @@
 .upload-pdf-container-styles {
   width: 100%;
   max-width: 500px;
+  min-width: 0;
+  height: auto;
+  min-height: 160px;
+  margin: 0 !important;
   background: var(--color-lightBlue) !important;
   border: 2px dashed var(--color-darkBlue);
   border-radius: 12px;
-  padding: 20px;
+  padding: 20px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   transition: background 0.2s ease;
+}
+
+.upload-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .upload-pdf-container-styles h3 {
@@ -99,4 +122,32 @@
 
 .inputs-create{
     border: 2px solid var(--color-grisClaro) !important;
+}
+
+@media screen and (max-width: 600px) {
+  .modal-activity {
+    width: calc(100vw - 24px) !important;
+    max-height: calc(100dvh - 24px);
+    padding: 20px 16px !important;
+  }
+
+  .modal-activity .modal-header-top {
+    gap: 10px;
+  }
+
+  .modal-activity .form-container-modal {
+    gap: 12px;
+  }
+
+  .upload-pdf-container-styles {
+    min-height: 150px;
+  }
+
+  .hours-required-styles {
+    gap: 10px;
+  }
+
+  .btn-create-submit {
+    height: 50px;
+  }
 }
