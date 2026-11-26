@@ -11,23 +11,23 @@ import {
 } from "../styled_components/styled_components";
 import "../styles/create-activity-screen.css";
 
-function CreateActivitiesModal() {
+function CreateActivitiesModal({onClose}) {
   const [isOpen, setIsOpen] = useState(true);
   if (!isOpen) return null;
 
   const strings = StringsCale();
 
   return (
-    <ModalOverlayCale>
+    <ModalOverlayCale className="modal-container">
       <ModalCardCale className="modal-activity">
         <div className="modal-header-top">
           <span
             className="material-symbols-outlined black-icon"
-            onClick={() => setIsOpen(false)}
+            onClick={onClose}
           >
             arrow_back
           </span>
-          <h3>Crear actividad</h3>
+          <h3>{strings.makeActivity}</h3>
         </div>
 
         <div className="form-container-modal">
@@ -73,6 +73,8 @@ function CreateActivitiesModal() {
 
             <p className="hours-label-text">{strings.hoursRequired}</p>
           </div>
+
+          <h4 className="upload-subtitle">Adjunte el archivo o enlace de la actividad</h4>
 
           <input className="hide-input" type="file" />
           <CardView className="upload-pdf-container-styles">

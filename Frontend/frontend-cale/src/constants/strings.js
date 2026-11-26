@@ -82,6 +82,7 @@ function StringsCale() {
     columnAdmission: "Admisión",
     searchStudent: "Buscar alumno",
     makeActivity: "Crear Actividad",
+    modifyActivity: "Modificar Actividad",
     pdfInstructions: "Visualizar el PDF de Instrucciones:",
     activityStatusTitle: "Estado de la Actividad",
     statusNotSent: "Sin entregar.",
@@ -125,6 +126,7 @@ function StringsCale() {
     hoursRequired: "Horas requeridas para acceder a la actividad.",
     dragPDF: "Arrastrar un archivo .PDF o...",
     createActivity: "Crear",
+    btnmodifyActivity: "Modificar",
     placeHolderLink: "Enlace",
   };
 }

@@ -21,6 +21,7 @@ import { useShowStudentList } from "../hooks/useShowStudentList";
 import StringsCale from "../constants/strings";
 import DeleteActivityModal from "../modals/DeleteActivityModal";
 import CreateActivitiesModal from "../modals/CreatesActivitiesModal";
+import ModifyActivityModal from "../modals/ModifyActivityModal";
 import ReleasedStudentListModal from "../modals/ReleasedStudentListModal";
 import { useListStudentSelect } from "../hooks/useListStudentSelect";
 import ViewPDF from "../modals/ViewPDFModal";
@@ -145,7 +146,7 @@ function ActivitiesContent() {
           <h2>Lista de actividades</h2>
           <ButtonCale
             className="make-activity"
-            onClick={() => setCreateActivityModal(true)}
+            onClick={() => setActiveModal('createActivity')}
           >
             {strings.makeActivity}
           </ButtonCale>
@@ -200,8 +201,12 @@ function ActivitiesContent() {
                     </span>
                   </div>
                   <div className="btn-modify-activity">
-                    <ModifyActivity className="btn-modify">
-                      Modificar
+                    <ModifyActivity 
+                      className="btn-modify"
+                      aria-label="Eliminar actividad"
+                      onClick={() => setActiveModal("modifyActivity")}
+                      >
+                      {strings.btnmodifyActivity}
                     </ModifyActivity>
                   </div>
                 </div>
@@ -220,8 +225,11 @@ function ActivitiesContent() {
           </ListRowContainerCale>
         </ListContainerCale>
       </article>
-      {showCreateActivityModal && (
-        <CreateActivitiesModal onClose={() => setCreateActivityModal(false)} />
+      {activeModal === 'createActivity' && (
+        <CreateActivitiesModal onClose={() => setActiveModal(null)} />
+      )}
+      {activeModal === "modifyActivity" && (
+        <ModifyActivityModal onClose={() => setActiveModal(null)} />
       )}
       {activeModal === "delete" && (
         <DeleteActivityModal onClose={() => setActiveModal(null)} />
